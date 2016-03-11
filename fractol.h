@@ -6,20 +6,24 @@
 /*   By: jfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 18:24:22 by jfortin           #+#    #+#             */
-/*   Updated: 2016/03/08 18:25:25 by jfortin          ###   ########.fr       */
+/*   Updated: 2016/03/11 18:09:54 by jfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# define WIN_X 1900
-# define WIN_Y 1080
+# define WIN_X 1000
+# define WIN_Y 1000
 
 # define KEYPRESS 2
 # define KEYRELEASE 3
+# define MOTIONNOTIFY 6
+# define BUTTONPRESS 4
 # define KEYPRESSMASK (1L<<0)
 # define KEYRELEASEMASK (1L<<1)
+# define POINTERMOTIONMASK (1L<<3)
+# define BUTTONPRESSMASK (1L<<2)
 
 # define LEFT 123
 # define RIGHT 124
@@ -32,9 +36,12 @@
 # define PAGE_UP 116
 # define PAGE_DOWN 121
 # define ZERO 82
+# define ONE 83
+# define TWO 84
+# define THREE 85
 # define ESC 53
 
-# define WELCOME "Welcome to FDF by jfortin"
+# define WELCOME "Welcome to FRACTOL by jfortin"
 # define PRESS "Press any key to start"
 
 # define CONTROLS "            CONTROLS"
@@ -46,8 +53,8 @@
 # define H_MINUS "    zoom out    |     -"
 # define H_STAR "increase height |     *"
 # define H_SLASH "decrease height |     /"
-# define H_PAGE_UP "   next colors  | page up"
-# define H_PAGE_DOWN "previous colors | page down"
+# define H_PAGE_UP "     add iter   | page up"
+# define H_PAGE_DOWN "     sub iter   | page down"
 # define H_ZERO "     reset      |     0"
 # define H_ESC "  exit program  |    esc"
 
@@ -58,33 +65,39 @@
 
 typedef struct		s_env
 {
-	int				fd;
+	char			**av;
 	void			*mlx;
 	void			*win;
-	char			**line;
-	int				cnt_line;
-	int				cnt_col;
-	int				**tab;
+
 	int				x;
 	int				y;
-	int				x_prim;
-	int				y_prim;
-	int				color;
+	int				i;
+	float			x1;
+	float			x2;
+	float			y1;
+	float			y2;
+	int				iter_max;
+	int				im_x;
+	int				im_y;
+	float			c_r;
+	float			c_i;
+	float			z_r;
+	float			z_i;
+	float			tmp;
 
-	int				zoom;
+	float			zoom;
+	int				col;
+
+	int				c;
+	int				itm;
+	int				res;
+
 	int				lr;
 	int				ud;
+	int				iter;
+	int				z;
 	int				height;
 	int				contrast;
-
-	int				tmpx;
-	int				tmpy;
-	int				dx;
-	int				dy;
-	int				sx;
-	int				sy;
-	int				tmp_error;
-	int				error;
 
 	void			*im;
 	char			*imc;
@@ -93,8 +106,10 @@ typedef struct		s_env
 	int				endi;
 }					t_env;
 
-void				ft_parse(t_env *e, char *line);
-void				ft_draw(int x2, int y2, t_env *e);
+void				ft_ini_val_mandel(t_env *e);
+void				ft_ini_val_julia(t_env *e);
+void				ft_print_mandel(t_env *e);
+void				ft_print_julia(t_env *e);
 void				ft_put_help(t_env e);
 void				ft_put_pixel(t_env *e, int x, int y, int color);
 
