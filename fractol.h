@@ -6,7 +6,7 @@
 /*   By: jfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 18:24:22 by jfortin           #+#    #+#             */
-/*   Updated: 2016/03/11 18:09:54 by jfortin          ###   ########.fr       */
+/*   Updated: 2016/03/11 21:06:24 by jfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define ONE 83
 # define TWO 84
 # define THREE 85
+# define FOUR 86
 # define ESC 53
 
 # define WELCOME "Welcome to FRACTOL by jfortin"
@@ -59,6 +60,7 @@
 # define H_ESC "  exit program  |    esc"
 
 # include "mlx.h"
+# include <math.h>
 # include <fcntl.h>
 # include <unistd.h>
 # include "libft/includes/libft.h"
@@ -107,8 +109,12 @@ typedef struct		s_env
 }					t_env;
 
 void				ft_ini_val_mandel(t_env *e);
+void				ft_ini_val_mandelbis(t_env *e);
+void				ft_ini_val_burning(t_env *e);
 void				ft_ini_val_julia(t_env *e);
 void				ft_print_mandel(t_env *e);
+void				ft_print_mandelbis(t_env *e);
+void				ft_print_burning(t_env *e);
 void				ft_print_julia(t_env *e);
 void				ft_put_help(t_env e);
 void				ft_put_pixel(t_env *e, int x, int y, int color);

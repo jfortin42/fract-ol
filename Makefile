@@ -6,7 +6,7 @@
 #    By: jfortin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 10:29:00 by jfortin           #+#    #+#              #
-#    Updated: 2016/03/11 15:01:37 by jfortin          ###   ########.fr        #
+#    Updated: 2016/03/11 21:05:19 by jfortin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,8 @@ MLX = -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
 
 SRC = 	main.c \
 		mandelbrot.c \
+		mandelbis.c \
+		burningship.c \
 		julia.c \
 		draw.c
 

@@ -6,7 +6,7 @@
 /*   By: jfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 18:20:56 by jfortin           #+#    #+#             */
-/*   Updated: 2016/03/11 19:02:47 by jfortin          ###   ########.fr       */
+/*   Updated: 2016/03/11 21:13:04 by jfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,17 @@ static void	ft_print(t_env *e)
 		ft_ini_val_julia(e);
 		ft_print_julia(e);
 	}
-	mlx_put_image_to_window(e->mlx, e->win, 0, 0, e->ud);
+	else if (!(ft_strcmp(e->av[1], "--burning")))
+	{
+		ft_ini_val_burning(e);
+		ft_print_burning(e);
+	}
+	else if (!(ft_strcmp(e->av[1], "--mandelbis")))
+	{
+		ft_ini_val_mandelbis(e);
+		ft_print_mandelbis(e);
+	}
+	mlx_put_image_to_window(e->mlx, e->win, e->im, 0, 0);
 	ft_put_help(*e);
 }
 
@@ -67,6 +77,10 @@ static int	ft_key_hit(int keycode, t_env *e)
 		e->av[1] = "--mandelbrot";
 	if (keycode == TWO)
 		e->av[1] = "--julia";
+	if (keycode == THREE)
+		e->av[1] = "--burning";
+	if (keycode == FOUR)
+		e->av[1] = "--mandelbis";
 	if (keycode == ZERO)
 		ft_init(e);
 	if (keycode == ESC)
@@ -87,7 +101,8 @@ int			main(int ac, char **av)
 	e.av = av;
 	if (ac != 2)
 		ft_error("Number of argument incorrect");
-	if (ft_strcmp(av[1], "--julia") && ft_strcmp(av[1], "--mandelbrot"))
+	if (ft_strcmp(av[1], "--julia") && ft_strcmp(av[1], "--mandelbrot") &&
+			ft_strcmp(av[1], "--burning") && ft_strcmp(av[1], "--mandelbis"))
 		ft_error("invalid parameter	usage : ./fractol --julia --mandelbrot");
 	e.mlx = mlx_init();
 	ft_init(&e);
