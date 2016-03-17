@@ -6,32 +6,31 @@
 /*   By: jfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/11 14:38:48 by jfortin           #+#    #+#             */
-/*   Updated: 2016/03/11 16:58:25 by jfortin          ###   ########.fr       */
+/*   Updated: 2016/03/17 17:40:13 by jfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_ini_val_mandel(t_env *e)
+void	ft_ini_val_mandelbrot(t_env *e)
 {
 	e->x1 = -2.1;
 	e->x2 = 0.6;
 	e->y1 = -1.2;
 	e->y2 = 1.2;
-	e->zoom = 300 + e->z;
-	e->im_x = (e->x2 - e->x1) * e->zoom;
+	e->zoom = 250;
+	e->im_x = (e->x2 - e->x1) * e->zoom + 150 + WIN_X - IM_X;
 	e->im_y = (e->y2 - e->y1) * e->zoom;
-	e->iter_max = 100 + e->iter;
-	e->col = 256;
-	e->x = 0;
+	e->iter_max = 90;
 }
 
 void	ft_print_mandel(t_env *e)
 {
-	while (e->x < e->im_x)
+	e->x = -1;
+	while (++e->x < e->im_x && e->x < IM_X)
 	{
-		e->y = 0;
-		while (e->y < e->im_y)
+		e->y = -1;
+		while (++e->y < e->im_y && e->y < WIN_Y)
 		{
 			e->c_r = e->x / e->zoom + e->x1;
 			e->c_i = e->y / e->zoom + e->y1;
@@ -48,9 +47,7 @@ void	ft_print_mandel(t_env *e)
 			if (e->i == e->iter_max)
 				ft_put_pixel(e, e->x, e->y, 0x000000);
 			else
-				ft_put_pixel(e, e->x, e->y, e->i * e->col / e->iter_max);
-			e->y++;
+				ft_put_pixel(e, e->x, e->y, e->i * 1899750);
 		}
-		e->x++;
 	}
 }

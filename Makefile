@@ -6,7 +6,7 @@
 #    By: jfortin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 10:29:00 by jfortin           #+#    #+#              #
-#    Updated: 2016/03/11 21:05:19 by jfortin          ###   ########.fr        #
+#    Updated: 2016/03/15 18:07:20 by jfortin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,14 @@ NAME = fractol
 
 MLX = -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
 
-SRC = 	main.c \
-		mandelbrot.c \
-		mandelbis.c \
-		burningship.c \
+SRC = burningship.c \
 		julia.c \
-		draw.c
+		key_biding.c \
+		main.c \
+		mandelbis.c \
+		mandelbrot.c \
+		utilities.c \
+		zoom.c
 
 OBJ = $(SRC:.c=.o)
 
