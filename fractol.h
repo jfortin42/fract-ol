@@ -6,7 +6,7 @@
 /*   By: jfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 18:24:22 by jfortin           #+#    #+#             */
-/*   Updated: 2016/03/17 18:25:06 by jfortin          ###   ########.fr       */
+/*   Updated: 2016/03/18 22:33:41 by jfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,22 @@
 # define FOUR 21
 
 # define WELCOME "Welcome to FRACTOL by jfortin"
-# define PRESS "Press any key to start"
+# define PRESS   "   Press any key to start    "
 
-# define CONTROLS "         CONTROLS"
+# define CONTROLS  "         CONTROLS      "
 # define H_L_CLICK "   zoom in   |  L click"
 # define H_R_CLICK "   zoom out  |  R click"
-# define H_PLUS "   add iter  |     +"
-# define H_MINUS "   sub iter  |     -"
-# define H_ZERO "     reset   |     0"
-# define H_NUM " change frac |  1-2-3-4"
-# define H_ESC "     exit    |    esc"
-# define H_JULIA1 "      move the mouse"
-# define H_JULIA2 "      to change the"
-# define H_JULIA3 "   shape of the fractal"
+# define H_PLUS    "   add iter  |     +   "
+# define H_MINUS   "   sub iter  |     -   "
+# define H_ZERO    "     reset   |     0   "
+# define H_NUM     " change frac |  1-2-3-4"
+# define H_ESC     "     exit    |    esc  "
+# define H_SPACE1  "   pause the |         "
+# define H_SPACE2  " modification|   space "
+# define H_SPACE3  "   of julia  |         "
+# define H_JULIA1  "      move the mouse   "
+# define H_JULIA2  "      to change the    "
+# define H_JULIA3  "   shape of the fractal"
 
 typedef struct	s_env
 {
@@ -121,6 +124,7 @@ void			ft_do_key_ation(t_env *e);
 
 void			ft_put_pixel(t_env *e, int x, int y, int color);
 void			ft_settings(t_env *e);
+void			ft_arg_error(void);
 
 int				ft_mouse_hook(int keycode, int x, int y, t_env *e);
 int				ft_julia_hook(int x, int y, t_env *e);

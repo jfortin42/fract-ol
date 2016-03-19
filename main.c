@@ -6,7 +6,7 @@
 /*   By: jfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 18:20:56 by jfortin           #+#    #+#             */
-/*   Updated: 2016/03/17 18:24:57 by jfortin          ###   ########.fr       */
+/*   Updated: 2016/03/18 22:34:05 by jfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,16 @@ int		main(int ac, char **av)
 	t_env e;
 
 	e.check = 0;
-	ac != 2 ? ft_error("Number of argument incorrect") : (e.av = av[1]);
+	ac != 2 ? ft_arg_error() : (e.av = av[1]);
 	if (ft_strcmp(av[1], "mandelbrot") && ft_strcmp(av[1], "julia")
 			&& ft_strcmp(av[1], "burning") && ft_strcmp(av[1], "mandelbis"))
-	{
-		ft_putendl_fd("Invalid argument", 2);
-		ft_error("Usage : ./fractol julia mandelbrot burning mandelbis");
-	}
+		ft_arg_error();
 	e.mlx = mlx_init();
 	e.win = mlx_new_window(e.mlx, WIN_X, WIN_Y, "fractol");
 	e.im = mlx_new_image(e.mlx, IM_X, WIN_Y);
 	e.imc = mlx_get_data_addr(e.im, &e.bpp, &e.imlen, &e.endi);
 	mlx_string_put(e.mlx, e.win, 400, 250, 0xFF9933, WELCOME);
-	mlx_string_put(e.mlx, e.win, 450, 279, 0xFF9933, PRESS);
+	mlx_string_put(e.mlx, e.win, 400, 279, 0xFF9933, PRESS);
 	ft_ini_fract(&e);
 	mlx_hook(e.win, MOTIONNOTIFY, POINTERMOTIONMASK, ft_julia_hook, &e);
 	mlx_hook(e.win, KEYPRESS, KEYPRESSMASK, ft_key_hit, &e);
