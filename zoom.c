@@ -6,7 +6,7 @@
 /*   By: jfortin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 17:54:10 by jfortin           #+#    #+#             */
-/*   Updated: 2016/03/17 17:45:15 by jfortin          ###   ########.fr       */
+/*   Updated: 2016/03/19 13:44:12 by jfortin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ static void	ft_zoom_in(int x, int y, t_env *e)
 
 int			ft_mouse_hook(int keycode, int x, int y, t_env *e)
 {
+	if (!e->check)
+		ft_settings(e);
+	e->check = 1;
 	if (y > 0)
 	{
 		if ((keycode == 1 || keycode == 5) && x <= IM_X)
