@@ -1,9 +1,9 @@
 # fract-ol
 
-Fractol is a program developped for my learning course at 42 school for the exploration of fractals.
+Fractol is a 42 Project designed to explore fractals.
 <img align="center" src="http://image.noelshack.com/fichiers/2016/46/1479404257-fract-ol-mandelbrot.png" width="100%" />
 Several options are available (see [Keyboard shortcuts](https://github.com/jfortin42/fract-ol#keyboard-shortcuts) and [Mouse controls](https://github.com/jfortin/fract-ol#mouse-controls) sections for more infos) :
-* Zoom and unzoom
+* Zoom in and zoom out
 * Change the number of iterations
 * Navigate between the four fractals
 * Edit the shape of the fractal with mouse motion (only available with the fractal Julia)
@@ -13,7 +13,7 @@ Several options are available (see [Keyboard shortcuts](https://github.com/jfort
 git clone https://github.com/jfortin42/fract-ol ~/fract-ol
 cd ~/fract-ol && make && ./fractol mandelbrot
 ```
-You have to launch the program with the parameter, mandelbrot, julia, burning or mandelbis.
+Launch the program with one of the following parameters: mandelbrot, julia, burning or mandelbis.
 Example :
 
 Open the Julia fractal ⇣
@@ -47,7 +47,7 @@ Open the Julia fractal ⇣
 <td valign="top" align="center"><kbd>&nbsp;+&nbsp;</kbd> <kbd>&nbsp;-&nbsp;</kbd></td>
 </tr>
 <tr>
-<td valign="top" height="30px">Reset the current Fractal</td>
+<td valign="top" height="30px">Reset the current fractal</td>
 <td valign="top" align="center"><kbd>&nbsp;0&nbsp;</kbd></td>
 </tr>
 <tr>
@@ -81,4 +81,4 @@ Open the Julia fractal ⇣
 </tbody>
 </table>
 ## Contact & contribute
-If you want to contact me, or fix/improve Fractol, just send me a mail at **jfortin@student.42.fr**
+To contact me, or fix/improve Fractol, feel free to e-mail me at **jfortin@student.42.fr**
